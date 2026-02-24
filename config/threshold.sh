@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CPU_LIMIT=80
+RAM_LIMIT=85
+DISK_LIMIT=90
+
