@@ -172,7 +172,6 @@ Possible enhancements include:
 * Web dashboard for visualization
 * Integration with messaging platforms for alerts
 * Containerized deployment using Docker
-* Log rotation and long-term storage
 * Integration with enterprise monitoring tools
 
 ---
