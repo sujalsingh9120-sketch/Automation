@@ -1,9 +1,9 @@
 # Linux Monitoring Automation 🚀
 
 A lightweight **Linux system monitoring and automation project** built using **Bash scripting and Cron scheduling**.
-The system periodically monitors **CPU, Disk, and Memory usage**, stores the results in structured logs, and can trigger alerts when system resources exceed predefined limits.
+The system periodically monitors CPU, Disk, and Memory usage and automatically sends email alerts when predefined thresholds are exceeded.
 
-This project demonstrates how basic **Linux utilities and shell scripting** can be used to build an automated monitoring system similar to what system administrators use in production environments.
+This project demonstrates how Linux system utilities and shell scripting can be combined to build a simple automated alerting system for server health monitoring.
 
 ---
 
@@ -12,25 +12,24 @@ This project demonstrates how basic **Linux utilities and shell scripting** can 
 Modern systems require continuous monitoring to ensure reliability and performance.
 This project provides a **simple automated monitoring framework** that collects system metrics and logs them for analysis.
 
-The project focuses on:
-
-* Automating system monitoring tasks
-* Logging resource usage
-* Detecting threshold breaches
-* Running monitoring jobs automatically
-
-It is designed to be **lightweight, modular, and easy to deploy** on Linux systems.
+* The project focuses on:
+* Collects system resource metrics
+* Compares them with defined thresholds
+* Detects abnormal system usage
+* Sends automated email alerts to administrators
+* Runs automatically using scheduled jobs
 
 ---
 
 # ⚙️ Features
 
 ✔ Automated monitoring of system resources
-✔ CPU, Disk, and Memory usage tracking
-✔ Structured logging for monitoring results
+✔ CPU, Disk, and Memory usage detection
+✔ Email alerts when system usage exceeds thresholds
 ✔ Modular Bash scripts for easy maintenance
 ✔ Automated execution using cron jobs
-✔ Works on most Linux distributions
+✔ Lightweight and efficient monitoring system
+✔ Compatible with most Linux distributions
 
 ---
 
@@ -50,10 +49,13 @@ main.sh (monitoring engine)
 threshold comparison
       │
       ▼
-structured logging
+email_alert.sh
       │
       ▼
-alert system
+SMTP mail service
+      │
+      ▼
+Administrator Email Alert
 ```
 
 ---
@@ -67,8 +69,7 @@ linux-monitoring-automation/
 │   ├── main.sh
 │   ├── cpu_monitor.sh
 │   ├── disk_monitor.sh
-│   ├── memory_monitor.sh
-│   └── email_alert.sh
+│   └── memory_monitor.sh
 │
 ├── config/
 │   └── configuration files
@@ -88,10 +89,10 @@ linux-monitoring-automation/
 # 🧠 How the System Works
 
 1. A scheduled job triggers the monitoring script.
-2. The main script executes monitoring modules for different resources.
-3. System metrics are collected and analyzed.
-4. The results are formatted and logged.
-5. If abnormal usage is detected, the alert mechanism is triggered.
+2. The main script runs monitoring modules to collect system resource metrics.
+3. The collected values are compared with predefined thresholds.
+4. If resource usage exceeds the allowed limit, the alert system is triggered.
+5. An automated email notification is sent to the administrator.
 
 ---
 
@@ -126,7 +127,7 @@ cd scripts
 ./main.sh
 ```
 
-The script will collect system metrics and store the output in the log directory.
+The script checks system resource usage and sends alerts if required.
 
 ---
 
@@ -144,19 +145,15 @@ This example runs the monitoring script **twice per day**.
 
 ---
 
-# 📊 Logging System
+# 📧 Alert System
 
-The monitoring script stores results in structured log files for analysis and auditing.
+When system resource usage crosses defined limits, the system automatically generates an alert and sends an email notification to the administrator.
 
-Log files typically contain:
+Alerts help administrators respond quickly to issues such as
 
-* Timestamp
-* CPU usage
-* Disk usage
-* Memory usage
-* System status
-
-Logs help administrators track system health over time.
+* High CPU utilization
+* Disk space exhaustion
+* Memory overconsumption
 
 ---
 
@@ -185,10 +182,5 @@ Possible enhancements include:
 * Bash Scripting
 * Linux System Utilities
 * Cron Scheduler
+* SMTP Mail Service
 * Git & GitHub
-
----
-
-# 📜 License
-
-This project is open source and available under the **MIT License**.
