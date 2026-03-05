@@ -37,7 +37,8 @@ else
 fi
 
 # -------------------- TERMINAL OUTPUT --------------------
-echo "$CURRENT_TIME | CPU:$CPU_VALUE ($CPU_STATUS) | DISK:$DISK_VALUE ($DISK_STATUS) | RAM:$MEMORY_VALUE ($RAM_STATUS)"
+echo "$CURRENT_TIME | CPU:$CPU_VALUE ($CPU_STATUS) | DISK:$DISK_VALUE ($DISK_STATUS) | RAM:$MEMORY_VALUE ($RAM_STATUS)" 
+
 
 # -------------------- LOG FILE ENTRY --------------------
 printf "%-20s | %-20s | %-20s | %-20s\n" \
@@ -45,3 +46,12 @@ printf "%-20s | %-20s | %-20s | %-20s\n" \
 "$DISK_VALUE ($DISK_STATUS)" \
 "$MEMORY_VALUE ($RAM_STATUS)" \
 "$CURRENT_TIME" >> "$LOG_FILE"
+
+#-------------------- Alert Notification --------------------------
+   
+ALERT_MSG="$CURRENT_TIME | CPU:$CPU_VALUE ($CPU_STATUS) | DISK:$DISK_VALUE ($DISK_STATUS) | RAM:$MEMORY_VALUE ($RAM_STATUS)"
+
+if [[ "$CPU_STATUS" == "ERROR" || "$DISK_STATUS" == "ERROR" || "$RAM_STATUS" == "ERROR" ]]; then
+    echo "$ALERT_MSG" | mail -s "SERVER ALERT" sujalsingh9120@gmail.com
+fi
+
